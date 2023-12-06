@@ -1,0 +1,7 @@
+pruebas:
+  login:
+    duracion: 10
+    usuarios: 1
+    intervalo: 1
+  
+  test_login2:
