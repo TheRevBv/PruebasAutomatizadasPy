@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 import os
 from db.config import Conexion
 import traceback
+from utils.loggs import Loggs
 
 class TestLogin():
     
@@ -29,6 +30,15 @@ class TestLogin():
                                "fecha":time.strftime("%c"), 
                                "datos":{"url":self.url,"user":self.user,"password":self.password},
                                "seguimiento_pila":traceback.format_exc()})
+            
+            log = Loggs("pruebas/logs/").loggs()
+            log.info("Prueba de inicio de sesión finalizada", extra={"accion":"test_login",
+                                                                     "estado":estado,
+                                                                     "error":error, 
+                                                                     "fecha":time.strftime("%c"), 
+                                                                     "datos":{"url":self.url,"user":self.user,"password":self.password},
+                                                                     "seguimiento_pila":traceback.extract_stack()})
+            
         except Exception as e:
             print(e)
         finally:
